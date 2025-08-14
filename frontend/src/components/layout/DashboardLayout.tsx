@@ -11,6 +11,7 @@ import {
   Bell,
   Calendar as CalendarIcon
 } from "lucide-react";
+import UserProfileMenu from "./UserProfileMenu";
 
 export default function DashboardLayout() {
   const location = useLocation();
@@ -124,9 +125,7 @@ export default function DashboardLayout() {
                   <span className="text-xs text-white font-medium">2</span>
                 </div>
               </div>
-              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                <span className="text-sm font-medium text-purple-600">AJ</span>
-              </div>
+              <UserProfileMenu />
             </div>
           </div>
         </header>
