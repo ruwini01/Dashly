@@ -70,10 +70,18 @@ export default function DashboardLayout() {
               </button>
             </Link>
             
-            <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
-              <Users className="w-4 h-4" />
-              Leads
-            </button>
+            <Link to="/leads">
+              <button 
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  isActive("/leads") 
+                    ? "bg-purple-600 text-white" 
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                <Users className="w-4 h-4" />
+                Leads
+              </button>
+            </Link>
             
             <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
               <FolderOpen className="w-4 h-4" />
