@@ -89,11 +89,18 @@ export default function DashboardLayout() {
               <PenTool className="w-4 h-4" />
               Content Planner
             </button>
-            
-            <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
-              <MessageSquare className="w-4 h-4" />
-              Team Chat
-            </button>
+            <Link to="/chat">
+              <button 
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  isActive("/chat") 
+                    ? "bg-purple-600 text-white" 
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                <MessageSquare className="w-4 h-4" />
+                Team Chat
+              </button>
+            </Link>
           </nav>
         </div>
       </div>
