@@ -23,7 +23,39 @@ import {
 
 export default function Profile() {
 
-    
+      const [isEditing, setIsEditing] = useState(false);
+  const { toast } = useToast();
+
+  const [profile, setProfile] = useState({
+    name: "John Doe",
+    email: "john.doe@example.com",
+    phone: "+1 (555) 123-4567",
+    location: "San Francisco, CA",
+    title: "Product Manager",
+    company: "Tech Startup Inc.",
+    bio: "Passionate product manager with 5+ years of experience building user-centric digital products.",
+    avatar: "",
+    skills: ["Product Management", "UI/UX Design", "Data Analysis", "Agile", "Leadership"],
+    timezone: "Pacific Standard Time",
+    department: "Product",
+    joinDate: "2023-01-15"
+  });
+
+  const handleSave = () => {
+    setIsEditing(false);
+    toast({
+      title: "Profile updated",
+      description: "Your profile has been successfully updated.",
+    });
+  };
+
+  const handleSkillRemove = (skillToRemove: string) => {
+    setProfile(prev => ({
+      ...prev,
+      skills: prev.skills.filter(skill => skill !== skillToRemove)
+    }));
+  };
+
     return (
       <div className="space-y-6 max-w-4xl mx-auto">
       {/* Header */}
