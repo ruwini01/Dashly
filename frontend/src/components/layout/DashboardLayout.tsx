@@ -11,6 +11,7 @@ import {
   Bell,
   Calendar as CalendarIcon
 } from "lucide-react";
+import UserProfileMenu from "./UserProfileMenu";
 
 export default function DashboardLayout() {
   const location = useLocation();
@@ -98,10 +99,18 @@ export default function DashboardLayout() {
               </button>
             </Link>
             
-            <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
-              <MessageSquare className="w-4 h-4" />
-              Team Chat
-            </button>
+            <Link to="/chat">
+              <button 
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  isActive("/chat") 
+                    ? "bg-purple-600 text-white" 
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                <MessageSquare className="w-4 h-4" />
+                Team Chat
+              </button>
+            </Link>
           </nav>
         </div>
       </div>
@@ -125,9 +134,7 @@ export default function DashboardLayout() {
                   <span className="text-xs text-white font-medium">2</span>
                 </div>
               </div>
-              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                <span className="text-sm font-medium text-purple-600">AJ</span>
-              </div>
+              <UserProfileMenu />
             </div>
           </div>
         </header>
