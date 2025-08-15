@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import Tasks from "./pages/Tasks";
+import ContentPlanner from "./pages/ContentPlanner";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +19,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="/tasks" element={<Tasks />} /> 
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/content-planner" element={<ContentPlanner />} />
           </Route>
         </Routes>
       </BrowserRouter>
