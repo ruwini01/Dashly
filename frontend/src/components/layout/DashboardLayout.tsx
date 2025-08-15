@@ -75,16 +75,25 @@ export default function DashboardLayout() {
               <Users className="w-4 h-4" />
               Leads
             </button>
-            
-            <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
-              <FolderOpen className="w-4 h-4" />
-              Projects
-            </button>
-            
+
+            <Link to="/projects">
+              <button 
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  isActive("/projects") 
+                    ? "bg-purple-600 text-white" 
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                <FolderOpen className="w-4 h-4" />
+                Projects
+              </button>
+            </Link>
+                        
             <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
               <Calendar className="w-4 h-4" />
               Calendar
             </button>
+            
             
             <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
               <PenTool className="w-4 h-4" />
