@@ -8,6 +8,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import Tasks from "./pages/Tasks";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,8 @@ const App = () => (
             <Route index element={<Dashboard />} />
             <Route path="/tasks" element={<Tasks />} /> 
             <Route path="/chat" element={<Chat />} />
-              <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/projects" element={<Projects />} />
 
           </Route>
         </Routes>
