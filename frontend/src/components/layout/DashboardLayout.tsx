@@ -8,8 +8,7 @@ import {
   PenTool, 
   MessageSquare,
   Grid,
-  Bell,
-  Calendar as CalendarIcon
+  Bell
 } from "lucide-react";
 import UserProfileMenu from "./UserProfileMenu";
 
@@ -75,12 +74,20 @@ export default function DashboardLayout() {
               <Users className="w-4 h-4" />
               Leads
             </button>
-            
-            <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
-              <FolderOpen className="w-4 h-4" />
-              Projects
-            </button>
-            
+
+            <Link to="/projects">
+              <button 
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  isActive("/projects") 
+                    ? "bg-purple-600 text-white" 
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                <FolderOpen className="w-4 h-4" />
+                Projects
+              </button>
+            </Link>
+                        
             <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
               <Calendar className="w-4 h-4" />
               Calendar
@@ -99,12 +106,25 @@ export default function DashboardLayout() {
               </button>
             </Link>
             
+            <Link to="/chat">
+              <button 
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  isActive("/chat") 
+                    ? "bg-purple-600 text-white" 
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                <MessageSquare className="w-4 h-4" />
+                Chat
+              </button>
+            </Link>
+            
             <button 
               className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors opacity-50 cursor-not-allowed"
               disabled
               title="Coming soon"
             >
-              <MessageSquare className="w-4 h-4" />
+              <Users className="w-4 h-4" />
               Team Chat
             </button>
           </nav>
@@ -118,7 +138,7 @@ export default function DashboardLayout() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-2 text-gray-600">
-                <CalendarIcon className="w-4 h-4" />
+                <Calendar className="w-4 h-4" />
                 <span className="text-sm">Welcome back, Alex</span>
               </div>
               <p className="text-sm text-gray-500">Wednesday, August 13, 2025</p>

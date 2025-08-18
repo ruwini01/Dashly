@@ -9,6 +9,7 @@ import Tasks from "./pages/Tasks";
 import ContentPlanner from "./pages/ContentPlanner";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/content-planner" element={<ContentPlanner />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/projects" element={<Projects />} />
           </Route>
         </Routes>
       </BrowserRouter>
