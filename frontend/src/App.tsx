@@ -6,8 +6,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
-
-
+import DashboardLayout from "./components/layout/DashboardLayout";
+import Dashboard from "./pages/Dashboard";
+import Tasks from "./pages/Tasks";
+import Chat from "./pages/Chat";
+import Profile from "./pages/Profile";
+import Projects from "./pages/Projects";
 import Calendar from "./pages/Calender";
 
 const queryClient = new QueryClient();
@@ -25,6 +29,11 @@ const App = () => (
               <Header />
               <main className="flex-1 overflow-auto p-6">
                 <Routes>
+                  <Route index element={<Dashboard />} />
+                  <Route path="/tasks" element={<Tasks />} />
+                  <Route path="/chat" element={<Chat />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/projects" element={<Projects />} />
                   <Route path="/calendar" element={<Calendar />} />
                 </Routes>
               </main>
