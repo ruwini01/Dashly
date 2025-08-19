@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import DashboardLayout from "./components/layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";
+import Leads from "./pages/leads";
 import ContentPlanner from "./pages/ContentPlanner";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
@@ -38,6 +39,7 @@ const App = () => (
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/calendar" element={<Calendar />} />
+                  <Route path="/leads" element={<Leads />} />
                 </Routes>
               </main>
             </div>
