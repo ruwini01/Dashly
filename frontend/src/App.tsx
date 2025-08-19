@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import DashboardLayout from "./components/layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";
+import ContentPlanner from "./pages/ContentPlanner";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import Projects from "./pages/Projects";
@@ -29,8 +30,10 @@ const App = () => (
               <Header />
               <main className="flex-1 overflow-auto p-6">
                 <Routes>
+                  <Route path="/" element={<DashboardLayout />}>
                   <Route index element={<Dashboard />} />
                   <Route path="/tasks" element={<Tasks />} />
+                  <Route path="/content-planner" element={<ContentPlanner />} />
                   <Route path="/chat" element={<Chat />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/projects" element={<Projects />} />
