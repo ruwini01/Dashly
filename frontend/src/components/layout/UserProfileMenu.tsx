@@ -62,7 +62,8 @@ const UserProfileMenu = () => {
       description: "You have been signed out of your account.",
     });
     setOpen(false);
-    navigate("/login");
+    // For now, just close the menu since login route doesn't exist
+    // navigate("/login");
   };
 
   const toggleDarkMode = () => {
@@ -78,7 +79,11 @@ const UserProfileMenu = () => {
       icon: User,
       label: "View Profile",
       onClick: () => {
-        navigate("/profile");
+        // navigate("/profile"); // Route not implemented yet
+        toast({
+          title: "Coming soon",
+          description: "Profile page will be available in a future update.",
+        });
         setOpen(false);
       },
     },
@@ -86,7 +91,11 @@ const UserProfileMenu = () => {
       icon: Settings,
       label: "Settings",
       onClick: () => {
-        navigate("/settings");
+        // navigate("/settings"); // Route not implemented yet
+        toast({
+          title: "Coming soon",
+          description: "Settings page will be available in a future update.",
+        });
         setOpen(false);
       },
     },
@@ -94,7 +103,11 @@ const UserProfileMenu = () => {
       icon: Bell,
       label: "Notification Preferences",
       onClick: () => {
-        navigate("/settings");
+        // navigate("/settings"); // Route not implemented yet
+        toast({
+          title: "Coming soon",
+          description: "Notification preferences will be available in a future update.",
+        });
         setOpen(false);
       },
     },
@@ -102,7 +115,11 @@ const UserProfileMenu = () => {
       icon: Shield,
       label: "Privacy & Security",
       onClick: () => {
-        navigate("/settings");
+        // navigate("/settings"); // Route not implemented yet
+        toast({
+          title: "Coming soon",
+          description: "Privacy & security settings will be available in a future update.",
+        });
         setOpen(false);
       },
     },
@@ -110,7 +127,11 @@ const UserProfileMenu = () => {
       icon: HelpCircle,
       label: "Help & Support",
       onClick: () => {
-        navigate("/help");
+        // navigate("/help"); // Route not implemented yet
+        toast({
+          title: "Coming soon",
+          description: "Help & support will be available in a future update.",
+        });
         setOpen(false);
       },
     },

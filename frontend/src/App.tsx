@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import Tasks from "./pages/Tasks";
+import ContentPlanner from "./pages/ContentPlanner";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import Projects from "./pages/Projects";
@@ -21,11 +22,11 @@ const App = () => (
         <Routes>
           <Route path="/" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="/tasks" element={<Tasks />} /> 
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/content-planner" element={<ContentPlanner />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/projects" element={<Projects />} />
-
           </Route>
         </Routes>
       </BrowserRouter>
