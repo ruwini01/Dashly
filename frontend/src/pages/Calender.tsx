@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { calendarEvents, CalendarEvent } from "@/data/mockData";
+import { CalendarEvent } from "@/data/mockData";
 import { 
   Plus, 
   Calendar as CalendarIcon,
@@ -19,9 +19,24 @@ import {
 } from "lucide-react";
 
 export default function Calendar() {
-  const [events, setEvents] = useState<CalendarEvent[]>(calendarEvents);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    type: "meeting",
+    date: new Date().toISOString().split('T')[0],
+    time: "09:00",
+    description: "",
+    attendees: []
+  });
+  // Fetch events from backend
+  useEffect(() => {
+    fetch("http://localhost:5000/api/calendar")
+      .then((res) => res.json())
+      .then((data) => setEvents(data))
+      .catch((err) => console.error("Failed to fetch events:", err));
+  }, []);
 
   const getEventTypeColor = (type: CalendarEvent['type']) => {
     switch (type) {
@@ -80,6 +95,36 @@ export default function Calendar() {
     upcoming: upcomingEvents.length
   };
 
+  // Handle new event input changes
+  const handleNewEventChange = (field: string, value: any) => {
+    setNewEvent((prev) => ({ ...prev, [field]: value }));
+  };
+
+  // Handle event creation
+  const handleCreateEvent = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/calendar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEvent)
+      });
+      if (!res.ok) throw new Error("Failed to create event");
+      const created = await res.json();
+      setEvents((prev) => [...prev, created]);
+      setIsAddDialogOpen(false);
+      setNewEvent({
+        title: "",
+        type: "meeting",
+        date: new Date().toISOString().split('T')[0],
+        time: "09:00",
+        description: "",
+        attendees: []
+      });
+    } catch (err) {
+      alert("Error creating event");
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -102,11 +147,11 @@ export default function Calendar() {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="eventTitle">Event Title</Label>
-                <Input id="eventTitle" placeholder="Enter event title" />
+                <Input id="eventTitle" placeholder="Enter event title" value={newEvent.title} onChange={e => handleNewEventChange("title", e.target.value)} />
               </div>
               <div>
                 <Label htmlFor="eventType">Event Type</Label>
-                <Select>
+                <Select value={newEvent.type} onValueChange={val => handleNewEventChange("type", val)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select event type" />
                   </SelectTrigger>
@@ -120,18 +165,18 @@ export default function Calendar() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="eventDate">Date</Label>
-                  <Input id="eventDate" type="date" />
+                  <Input id="eventDate" type="date" value={newEvent.date} onChange={e => handleNewEventChange("date", e.target.value)} />
                 </div>
                 <div>
                   <Label htmlFor="eventTime">Time</Label>
-                  <Input id="eventTime" type="time" />
+                  <Input id="eventTime" type="time" value={newEvent.time} onChange={e => handleNewEventChange("time", e.target.value)} />
                 </div>
               </div>
               <div>
                 <Label htmlFor="eventDescription">Description</Label>
-                <Textarea id="eventDescription" placeholder="Event description" />
+                <Textarea id="eventDescription" placeholder="Event description" value={newEvent.description} onChange={e => handleNewEventChange("description", e.target.value)} />
               </div>
-              <Button className="w-full bg-gradient-primary">Create Event</Button>
+              <Button className="w-full bg-gradient-primary" onClick={handleCreateEvent}>Create Event</Button>
             </div>
           </DialogContent>
         </Dialog>
