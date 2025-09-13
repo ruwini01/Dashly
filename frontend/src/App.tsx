@@ -32,14 +32,15 @@ const App = () => (
               <main className="flex-1 overflow-auto p-6">
                 <Routes>
                   <Route path="/" element={<DashboardLayout />}>
-                  <Route index element={<Dashboard />} />
-                  <Route path="/tasks" element={<Tasks />} />
-                  <Route path="/content-planner" element={<ContentPlanner />} />
-                  <Route path="/chat" element={<Chat />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/calendar" element={<Calendar />} />
-                  <Route path="/leads" element={<Leads />} />
+                    <Route index element={<Dashboard />} />
+                    <Route path="/tasks" element={<Tasks />} />
+                    <Route path="/content-planner" element={<ContentPlanner />} />
+                    <Route path="/chat" element={<Chat />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/calendar" element={<Calendar />} />
+                    <Route path="/leads" element={<Leads />} />
+                  </Route>
                 </Routes>
               </main>
             </div>
@@ -51,4 +52,3 @@ const App = () => (
 );
 
 export default App;
-
